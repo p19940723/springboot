@@ -1,7 +1,7 @@
 package com.seven.authority.common.result;
 
 import com.github.pagehelper.PageInfo;
-import com.seven.authority.common.enums.StatusCodeEnmus;
+import com.seven.authority.common.enums.StatusCodeEnums;
 
 import java.util.List;
 
@@ -31,17 +31,17 @@ public class ResultPage<T> extends AbstractResult {
     private Integer pageSize;
     @SuppressWarnings(value = "unchecked")
     public static <T> ResultPage<T> error() {
-        return new ResultPage(StatusCodeEnmus.SYSTEM_ERROR);
+        return new ResultPage(StatusCodeEnums.SYSTEM_ERROR);
     }
 
     @SuppressWarnings(value = "unchecked")
-    public static <T> ResultPage<T> error(StatusCodeEnmus statusCodeEnmus) {
-        return new ResultPage(statusCodeEnmus);
+    public static <T> ResultPage<T> error(StatusCodeEnums statusCodeEnums) {
+        return new ResultPage(statusCodeEnums);
     }
 
     @SuppressWarnings(value = "unchecked")
     public static <T> ResultPage<T> list(PageInfo<T> datas) {
-    	ResultPage<T> res =  new ResultPage(StatusCodeEnmus.SUCCESS);
+    	ResultPage<T> res =  new ResultPage(StatusCodeEnums.SUCCESS);
         res.dataList = datas.getList();
         res.totalPage = datas.getPages();
         res.totalNumber = (int)datas.getTotal();
@@ -50,8 +50,8 @@ public class ResultPage<T> extends AbstractResult {
         return res;
     }
 
-    public ResultPage(StatusCodeEnmus statusCodeEnmus) {
-        super(statusCodeEnmus);
+    private ResultPage(StatusCodeEnums statusCodeEnums) {
+        super(statusCodeEnums);
     }
 
     public ResultPage(String code, String message) {

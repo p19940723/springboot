@@ -1,6 +1,6 @@
 package com.seven.authority.common.exception;
 
-import com.seven.authority.common.enums.StatusCodeEnmus;
+import com.seven.authority.common.enums.StatusCodeEnums;
 import com.seven.authority.common.result.ResultData;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -15,24 +15,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Slf4j
 @ControllerAdvice(basePackages = {"com.seven.authority"})
 public class WebExceptionHandler {
-
-    private final static Logger logger = LoggerFactory.getLogger(WebExceptionHandler.class);
+    /**
+     * 捕捉全局的CommonException的错误并统一返回
+     *
+     * @param e 错误对象
+     * @return 给前台返回值错误数据
+     */
+    @ExceptionHandler(value = CommonException.class)
+    @ResponseBody
+    public ResultData error(CommonException e) {
+        log.error(e.getMessage());
+        e.printStackTrace();
+        return ResultData.error(e.getCode(), e.getMessage());
+    }
 
     /**
      * 捕捉全局的Exception的错误并统一返回
-     * @param ex
-     * @return
+     *
+     * @param e 错误对象
+     * @return 给前台返回值错误数据
      */
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    ResultData controllerException(Throwable ex) {
-        logger.error(ex.getMessage());
-        if (ex instanceof CommonException) {
-            StatusCodeEnmus.SYSTEM_ERROR.setMessage(ex.getMessage());
-            StatusCodeEnmus.SYSTEM_ERROR.setCode(((CommonException) ex).getCode());
-        } else {
-            StatusCodeEnmus.SYSTEM_ERROR.setMessage(ex.getMessage());
-        }
-        return ResultData.error(StatusCodeEnmus.SYSTEM_ERROR);
+    public ResultData error(Exception e) {
+        log.error(e.getMessage());
+        e.printStackTrace();
+        return ResultData.error(StatusCodeEnums.SYSTEM_ERROR);
     }
 }

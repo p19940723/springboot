@@ -1,8 +1,10 @@
 package com.seven.authority.common.exception;
 
 
-import com.seven.authority.common.enums.StatusCodeEnmus;
-
+import com.seven.authority.common.enums.StatusCodeEnums;
+/**
+ * @author seven
+ */
 public class CommonException extends RuntimeException {
 
     private static final long serialVersionUID = -7171148211322503748L;
@@ -32,7 +34,7 @@ public class CommonException extends RuntimeException {
         this.code = code;
     }
 
-    public CommonException(StatusCodeEnmus statusCode) {
+    public CommonException(StatusCodeEnums statusCode) {
         this.code = statusCode.getCode();
         this.message = statusCode.getMessage();
     }

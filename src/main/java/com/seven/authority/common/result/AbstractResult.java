@@ -1,22 +1,22 @@
 package com.seven.authority.common.result;
 
-import com.seven.authority.common.enums.StatusCodeEnmus;
+import com.seven.authority.common.enums.StatusCodeEnums;
 
 /**
  * @author seven
  */
 public class AbstractResult {
 
-	String code;
+    private String code;
+
+    private String message;
 	
-	String message;
-	
-	public AbstractResult(StatusCodeEnmus statusCodeEnmus) {
-        this.code = statusCodeEnmus.getCode();
-        this.message = statusCodeEnmus.getMessage();
+	AbstractResult(StatusCodeEnums statusCodeEnums) {
+        this.code = statusCodeEnums.getCode();
+        this.message = statusCodeEnums.getMessage();
     }
 
-    public AbstractResult(String code, String message) {
+    AbstractResult(String code, String message) {
         this.code = code;
         this.message = message;
     }

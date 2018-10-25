@@ -6,12 +6,28 @@ import org.springframework.stereotype.Service;
 
 import javax.jms.Destination;
 
+/**
+ * @author seven
+ */
 @Service("producer")
-public class Producer {  
-    @Autowired // 也可以注入JmsTemplate，JmsMessagingTemplate对JmsTemplate进行了封装
+public class Producer {
+    /**
+     * 也可以注入JmsTemplate，JmsMessagingTemplate对JmsTemplate进行了封装
+     */
     private JmsMessagingTemplate jmsTemplate;
-    // 发送消息，destination是发送到的队列，message是待发送的消息  
-    public void sendMessage(Destination destination, final String message){
-        jmsTemplate.convertAndSend(destination, message);  
-    }  
+
+    @Autowired
+    public Producer(JmsMessagingTemplate jmsTemplate) {
+        this.jmsTemplate = jmsTemplate;
+    }
+
+    /**
+     * 发送消息，destination是发送到的队列，message是待发送的消息
+     *
+     * @param destination  发送到的队列名
+     * @param message 待发送的消息
+     */
+    public void sendMessage(Destination destination, final String message) {
+        jmsTemplate.convertAndSend(destination, message);
+    }
 }

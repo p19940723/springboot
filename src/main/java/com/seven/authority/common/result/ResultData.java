@@ -1,7 +1,7 @@
 package com.seven.authority.common.result;
 
 
-import com.seven.authority.common.enums.StatusCodeEnmus;
+import com.seven.authority.common.enums.StatusCodeEnums;
 
 /**
  * 返回一般数据格式
@@ -15,17 +15,17 @@ public class ResultData<T> extends AbstractResult {
 	
 	@SuppressWarnings(value = "unchecked")
     public static <T> ResultData<T> ok() {
-        return new ResultData(StatusCodeEnmus.SUCCESS);
+        return new ResultData(StatusCodeEnums.SUCCESS);
     }
 
     @SuppressWarnings(value = "unchecked")
     public static <T> ResultData<T> error() {
-        return new ResultData(StatusCodeEnmus.SYSTEM_ERROR);
+        return new ResultData(StatusCodeEnums.SYSTEM_ERROR);
     }
 
     @SuppressWarnings(value = "unchecked")
-    public static <T> ResultData<T> error(StatusCodeEnmus statusCodeEnmus) {
-        return new ResultData(statusCodeEnmus);
+    public static <T> ResultData<T> error(StatusCodeEnums statusCodeEnums) {
+        return new ResultData(statusCodeEnums);
     }
 
     @SuppressWarnings(value = "unchecked")
@@ -33,16 +33,16 @@ public class ResultData<T> extends AbstractResult {
         return new ResultData(code, message);
     }
 
-    public ResultData(StatusCodeEnmus statusCodeEnmus) {
-        super(statusCodeEnmus);
+    private ResultData(StatusCodeEnums statusCodeEnums) {
+        super(statusCodeEnums);
     }
 
-    public ResultData(String code, String message) {
+    private ResultData(String code, String message) {
         super(code, message);
     }
 
     public static <T> ResultData<T> one(T obj) {
-        ResultData<T> res = new ResultData(StatusCodeEnmus.SUCCESS);
+        ResultData<T> res = new ResultData<>(StatusCodeEnums.SUCCESS);
         res.data = obj;
         return res;
     }
