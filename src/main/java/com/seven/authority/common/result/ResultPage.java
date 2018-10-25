@@ -50,7 +50,7 @@ public class ResultPage<T> extends AbstractResult {
         return res;
     }
 
-    private ResultPage(StatusCodeEnums statusCodeEnums) {
+    public ResultPage(StatusCodeEnums statusCodeEnums) {
         super(statusCodeEnums);
     }
 

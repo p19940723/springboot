@@ -33,11 +33,11 @@ public class ResultData<T> extends AbstractResult {
         return new ResultData(code, message);
     }
 
-    private ResultData(StatusCodeEnums statusCodeEnums) {
+    public ResultData(StatusCodeEnums statusCodeEnums) {
         super(statusCodeEnums);
     }
 
-    private ResultData(String code, String message) {
+    public ResultData(String code, String message) {
         super(code, message);
     }
 
