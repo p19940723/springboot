@@ -10,11 +10,11 @@ spring:
     # 连接池的配置信息
     druid:
       #数据库链接
-      url: jdbc:mysql://127.0.0.1:3306/mysql?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false&serverTimezone=CTT
+      url: jdbc:mysql://180.76.239.43:3306/blog?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false&serverTimezone=CTT
       #帐号
       username: root
       #密码
-      password: root
+      password: Root!!2018
       #Driver
       driver-class-name: com.mysql.jdbc.Driver
       # 初始化大小
@@ -42,7 +42,17 @@ spring:
       max-pool-prepared-statement-per-connection-size: 20
       # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
       #filters: stat,wall,log4j
+      filter:
+        commons-log:
+          connection-logger-name: stat,wall,log4j
       # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
       # 合并多个DruidDataSource的监控数据
       useGlobalDataSourceStat: true
+  #消息队列配置
+  activemq:
+    broker-url: tcp://java-dev-lan.tiantianremai.cn:61616
+
+#引入日志打印文件
+logging:
+  config: classpath:logback.xml
