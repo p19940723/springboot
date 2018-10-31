@@ -52,7 +52,9 @@ spring:
   #消息队列配置
   activemq:
     broker-url: tcp://java-dev-lan.tiantianremai.cn:61616
-
+    user:
+    password:
+    in-memory:
 #引入日志打印文件
 logging:
   config: classpath:logback.xml
