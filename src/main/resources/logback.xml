@@ -1,4 +1,11 @@
-<configuration>
+<configuration scan="true" scanPeriod="30 seconds">
+    <!--scan:-->
+    <!--当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。-->
+    <!--scanPeriod:-->
+    <!--设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。-->
+    <!--debug:-->
+    <!--当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。-->
+
     <!-- %m输出的信息, %p日志级别, %t线程名, %d日期, %c类的全名, %i索引 -->
     <!-- appender是configuration的子节点,是负责写日志的组件 -->
     <!-- ConsoleAppender把日志输出到控制台 -->
@@ -55,16 +62,16 @@
         </connectionSource>
     </appender>
     <!-- 控制台日志输出级别 -->
-    <root level="DEBUG">
+    <root name="com.seven.authority"  level="INFO">
         <appender-ref ref="STDOUT"/>
     </root>
     <!-- 指定项目中某个包，当有日志操作行为时的日志记录级别 -->
-    <!-- com.appley为根包，也就是只要是发生在这个根包下面的所有日志操作行为的权限都是DEBUG -->
+    <!-- ccom.seven.authority为根包，也就是只要是发生在这个根包下面的所有日志操作行为的权限都是DEBUG -->
     <!-- 级别依次为【从高到低】：FATAL > ERROR > WARN > INFO > DEBUG > TRACE  -->
-    <logger name="com.seven.authority" level="DEBUG">
+    <logger name="com.seven.authority" level="ERROR">
         <appender-ref ref="syslog"/>
     </logger>
-    <logger name="com.seven.authority" level="DEBUG">
+    <logger name="com.seven.authority" level="ERROR">
         <appender-ref ref="DB-CLASSIC-MYSQL-POOL"/>
     </logger>
 </configuration>
