@@ -32,8 +32,9 @@ public enum StatusCodeEnums {
     //系统异常
     SYSTEM_ERROR("501", "系统异常"),
     //未知异常
-    UNKNOWN_ERROR("502", "未知异常");
-
+    UNKNOWN_ERROR("502", "未知异常"),
+    //日志插入异常
+    LOG_ERROR("503", "日志插入异常");
 
 	private String code;
 	private String message;
