@@ -4,8 +4,7 @@ import ch.qos.logback.classic.spi.CallerData;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.db.DBAppenderBase;
 import ch.qos.logback.core.db.DBHelper;
-import com.seven.authority.common.enums.StatusCodeEnums;
-import com.seven.authority.common.exception.CommonException;
+import com.seven.authority.common.utils.logs.LogsSQLBuilder;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -19,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class MyDBAppender extends DBAppenderBase<ILoggingEvent> {
+public class DBAppender extends DBAppenderBase<ILoggingEvent> {
 
     private static final Method GET_GENERATED_KEYS_METHOD;
 
@@ -52,26 +51,6 @@ public class MyDBAppender extends DBAppenderBase<ILoggingEvent> {
 
     static final StackTraceElement EMPTY_CALLER_DATA = CallerData.naInstance();
 
-    //生成插入日志的sql
-    public static String buildInsertSQL() {
-        StringBuilder sqlBuilder = new StringBuilder("INSERT INTO ");
-        sqlBuilder.append("log").append(" (");
-        sqlBuilder.append("id").append(", ");
-        sqlBuilder.append("url").append(", ");
-        sqlBuilder.append("request_ip").append(", ");
-        sqlBuilder.append("project").append(", ");
-        sqlBuilder.append("class").append(", ");
-        sqlBuilder.append("classpath").append(", ");
-        sqlBuilder.append("method").append(", ");
-        sqlBuilder.append("thread_name").append(", ");
-        sqlBuilder.append("msg_level").append(", ");
-        sqlBuilder.append("msg").append(", ");
-        sqlBuilder.append("line").append(", ");
-        sqlBuilder.append("create_date").append(") ");
-        sqlBuilder.append("VALUES (?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        System.out.println(sqlBuilder.toString());
-        return sqlBuilder.toString();
-    }
 
     static {
         // PreparedStatement.getGeneratedKeys() method was added in JDK 1.4
@@ -87,7 +66,7 @@ public class MyDBAppender extends DBAppenderBase<ILoggingEvent> {
 
     @Override
     public void start() {
-        insertSQL = buildInsertSQL();
+        insertSQL = LogsSQLBuilder.buildInsertSQL();
         super.start();
     }
 

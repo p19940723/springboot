@@ -1,18 +1,14 @@
-package com.seven.authority.common.utils.sqlBuilder;
+package com.seven.authority.common.utils.logs;
 
 /**
  * Created by shenlu on 2018/3/20.
  */
-public class MySQLBuilder {
+public class LogsSQLBuilder {
     //生成插入日志的sql
     public static String buildInsertSQL() {
         StringBuilder sqlBuilder = new StringBuilder("INSERT INTO ");
         sqlBuilder.append("log").append(" (");
         sqlBuilder.append("id").append(", ");
-        sqlBuilder.append("user_name").append(", ");
-        sqlBuilder.append("pass_word").append(", ");
-        sqlBuilder.append("app_key").append(", ");
-        sqlBuilder.append("server_ip").append(", ");
         sqlBuilder.append("url").append(", ");
         sqlBuilder.append("request_ip").append(", ");
         sqlBuilder.append("project").append(", ");
@@ -22,8 +18,9 @@ public class MySQLBuilder {
         sqlBuilder.append("thread_name").append(", ");
         sqlBuilder.append("msg_level").append(", ");
         sqlBuilder.append("msg").append(", ");
+        sqlBuilder.append("line").append(", ");
         sqlBuilder.append("create_date").append(") ");
-        sqlBuilder.append("VALUES (?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?)");
+        sqlBuilder.append("VALUES (?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?)");
         return sqlBuilder.toString();
     }
 }
