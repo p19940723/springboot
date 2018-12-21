@@ -17,8 +17,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
+/**
+ * @author seven
+ */
 public class DBAppender extends DBAppenderBase<ILoggingEvent> {
 
     private static final Method GET_GENERATED_KEYS_METHOD;

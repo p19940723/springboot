@@ -1,10 +1,15 @@
 package com.seven.authority.common.utils.logs;
 
 /**
- * Created by shenlu on 2018/3/20.
+ * @author seven
  */
 public class LogsSQLBuilder {
-    //生成插入日志的sql
+
+    /**
+     * 生成插入日志的sql
+     *
+     * @return
+     */
     public static String buildInsertSQL() {
         StringBuilder sqlBuilder = new StringBuilder("INSERT INTO ");
         sqlBuilder.append("sys_log").append(" (");
