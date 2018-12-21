@@ -23,29 +23,53 @@ import java.util.Date;
  */
 public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
 
-    //id
+    /**
+     * id
+     **/
     static final int UUID_INDEX = 1;
-    //请求地址
+    /**
+     * 请求地址
+     **/
     static final int URL_INDEX = 2;
-    //请求地址
+    /**
+     * 请求地址
+     **/
     static final int REQUESTIP_INDEX = 3;
-    //工程名
+    /**
+     * 工程名
+     **/
     static final int PROJECT_INDEX = 4;
-    //类名
+    /**
+     * 类名
+     **/
     static final int CLASS_INDEX = 5;
-    //路径
+    /**
+     * 路径
+     **/
     static final int CLASSPATH_INDEX = 6;
-    //方法名
+    /**
+     * 方法名
+     **/
     static final int METHOD_INDEX = 7;
-    //线程名
+    /**
+     * 线程名
+     **/
     static final int THREADNAME_INDEX = 8;
-    //信息级别
+    /**
+     * 信息级别
+     **/
     static final int MSGLEVEL_INDEX = 9;
-    //日志信息
+    /**
+     * 日志信息
+     **/
     static final int MSG_INDEX = 10;
-    //行数
+    /**
+     * 行数
+     **/
     static final int CALLER_LINE_INDEX = 11;
-    //创建时间
+    /**
+     * 创建时间
+     **/
     static final int CREATEDATE_INDEX = 12;
     static final StackTraceElement EMPTY_CALLER_DATA = CallerData.naInstance();
     private static final Method GET_GENERATED_KEYS_METHOD;
@@ -62,7 +86,9 @@ public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
         GET_GENERATED_KEYS_METHOD = getGeneratedKeysMethod;
     }
 
-    //插入sql
+    /**
+     * 插入sql
+     **/
     protected String insertSQL;
 
     @Override
@@ -98,7 +124,9 @@ public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
 
     }
 
-    //安全验证及个性化的数据
+    /**
+     * 安全验证及个性化的数据
+     */
     private void bindLoggingMyInfoWithPreparedStatement(PreparedStatement stmt, ILoggingEvent event) throws SQLException {
         RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
         if (null == requestAttributes) {
@@ -145,9 +173,10 @@ public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
         return callerDataArray != null && callerDataArray.length > 0 && callerDataArray[0] != null;
     }
 
-    /* (non-Javadoc)
+    /**
+     * (non-Javadoc)
      * @see ch.qos.logback.core.db.DBAppenderBase#append(java.lang.Object)
-     */
+     **/
     @Override
     @Async
     public void append(ILoggingEvent eventObject) {
