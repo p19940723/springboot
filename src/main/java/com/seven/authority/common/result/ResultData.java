@@ -5,15 +5,24 @@ import com.seven.authority.common.enums.StatusCodeEnums;
 
 /**
  * 返回一般数据格式
- * @author seven
+ *
  * @param <T>
+ * @author seven
  */
 
 public class ResultData<T> extends AbstractResult {
 
-	private T data;
-	
-	@SuppressWarnings(value = "unchecked")
+    private T data;
+
+    public ResultData(StatusCodeEnums statusCodeEnums) {
+        super(statusCodeEnums);
+    }
+
+    public ResultData(String code, String message) {
+        super(code, message);
+    }
+
+    @SuppressWarnings(value = "unchecked")
     public static <T> ResultData<T> ok() {
         return new ResultData(StatusCodeEnums.SUCCESS);
     }
@@ -31,14 +40,6 @@ public class ResultData<T> extends AbstractResult {
     @SuppressWarnings(value = "unchecked")
     public static <T> ResultData<T> error(String code, String message) {
         return new ResultData(code, message);
-    }
-
-    public ResultData(StatusCodeEnums statusCodeEnums) {
-        super(statusCodeEnums);
-    }
-
-    public ResultData(String code, String message) {
-        super(code, message);
     }
 
     public static <T> ResultData<T> one(T obj) {

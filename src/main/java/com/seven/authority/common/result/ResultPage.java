@@ -12,23 +12,32 @@ public class ResultPage<T> extends AbstractResult {
     /**
      * 列表数据
      */
-	private List<T> dataList;
+    private List<T> dataList;
     /**
-     *总页数
+     * 总页数
      */
     private Integer totalPage;
     /**
-     *总条数
+     * 总条数
      */
     private Integer totalNumber;
     /**
-     *当前页
+     * 当前页
      */
     private Integer pageIndex;
     /**
-     *当前页条数
+     * 当前页条数
      */
     private Integer pageSize;
+
+    public ResultPage(StatusCodeEnums statusCodeEnums) {
+        super(statusCodeEnums);
+    }
+
+    public ResultPage(String code, String message) {
+        super(code, message);
+    }
+
     @SuppressWarnings(value = "unchecked")
     public static <T> ResultPage<T> error() {
         return new ResultPage(StatusCodeEnums.SYSTEM_ERROR);
@@ -41,21 +50,13 @@ public class ResultPage<T> extends AbstractResult {
 
     @SuppressWarnings(value = "unchecked")
     public static <T> ResultPage<T> list(PageInfo<T> datas) {
-    	ResultPage<T> res =  new ResultPage(StatusCodeEnums.SUCCESS);
+        ResultPage<T> res = new ResultPage(StatusCodeEnums.SUCCESS);
         res.dataList = datas.getList();
         res.totalPage = datas.getPages();
-        res.totalNumber = (int)datas.getTotal();
+        res.totalNumber = (int) datas.getTotal();
         res.pageIndex = datas.getPageNum();
         res.pageSize = datas.getSize();
         return res;
-    }
-
-    public ResultPage(StatusCodeEnums statusCodeEnums) {
-        super(statusCodeEnums);
-    }
-
-    public ResultPage(String code, String message) {
-        super(code, message);
     }
 
     public List<T> getDataList() {

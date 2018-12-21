@@ -23,10 +23,6 @@ import java.util.Date;
  */
 public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
 
-    private static final Method GET_GENERATED_KEYS_METHOD;
-
-    //插入sql
-    protected String insertSQL;
     //id
     static final int UUID_INDEX = 1;
     //请求地址
@@ -51,9 +47,8 @@ public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
     static final int CALLER_LINE_INDEX = 11;
     //创建时间
     static final int CREATEDATE_INDEX = 12;
-
     static final StackTraceElement EMPTY_CALLER_DATA = CallerData.naInstance();
-
+    private static final Method GET_GENERATED_KEYS_METHOD;
 
     static {
         // PreparedStatement.getGeneratedKeys() method was added in JDK 1.4
@@ -66,6 +61,9 @@ public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
         }
         GET_GENERATED_KEYS_METHOD = getGeneratedKeysMethod;
     }
+
+    //插入sql
+    protected String insertSQL;
 
     @Override
     public void start() {
@@ -107,7 +105,7 @@ public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
             stmt.setString(URL_INDEX, "系统日志");
             stmt.setString(REQUESTIP_INDEX, "系统日志");
             stmt.setString(PROJECT_INDEX, "系统日志");
-        }else {
+        } else {
             HttpServletRequest request = ((ServletRequestAttributes) requestAttributes).getRequest();
             stmt.setString(URL_INDEX, request.getRequestURL().toString());
             stmt.setString(REQUESTIP_INDEX, request.getRemoteAddr());
@@ -132,7 +130,7 @@ public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
         stmt.setString(CLASS_INDEX, caller.getFileName());
         stmt.setString(CLASSPATH_INDEX, caller.getClassName());
         stmt.setString(METHOD_INDEX, caller.getMethodName());
-        stmt.setString (CALLER_LINE_INDEX ,Integer.toString(caller.getLineNumber()));
+        stmt.setString(CALLER_LINE_INDEX, Integer.toString(caller.getLineNumber()));
     }
 
     private StackTraceElement extractFirstCaller(StackTraceElement[] callerDataArray) {

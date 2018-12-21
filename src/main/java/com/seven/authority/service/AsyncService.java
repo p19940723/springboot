@@ -1,4 +1,5 @@
 package com.seven.authority.service;
+
 /**
  * @author seven
  */

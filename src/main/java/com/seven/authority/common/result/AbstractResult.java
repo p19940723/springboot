@@ -10,8 +10,8 @@ public class AbstractResult {
     private String code;
 
     private String message;
-	
-	AbstractResult(StatusCodeEnums statusCodeEnums) {
+
+    AbstractResult(StatusCodeEnums statusCodeEnums) {
         this.code = statusCodeEnums.getCode();
         this.message = statusCodeEnums.getMessage();
     }

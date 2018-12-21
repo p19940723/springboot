@@ -24,8 +24,8 @@ public class Producer {
     /**
      * 发送消息，destination是发送到的队列，message是待发送的消息
      *
-     * @param destination  发送到的队列名
-     * @param message 待发送的消息
+     * @param destination 发送到的队列名
+     * @param message     待发送的消息
      */
     public void sendMessage(Destination destination, final String message) {
         jmsTemplate.convertAndSend(destination, message);

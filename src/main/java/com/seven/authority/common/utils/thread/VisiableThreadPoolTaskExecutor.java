@@ -1,9 +1,6 @@
 package com.seven.authority.common.utils.thread;
 
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.util.concurrent.ListenableFuture;
 

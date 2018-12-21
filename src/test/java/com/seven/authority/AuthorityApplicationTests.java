@@ -14,17 +14,17 @@ import javax.jms.Destination;
 @SpringBootTest
 public class AuthorityApplicationTests {
 
-	@Autowired
-	private Producer producer;
+    @Autowired
+    private Producer producer;
 
-	@Test
-	public void contextLoads() throws InterruptedException {
-		Destination destination = new ActiveMQQueue("mytest.queue");
+    @Test
+    public void contextLoads() throws InterruptedException {
+        Destination destination = new ActiveMQQueue("mytest.queue");
 
-		for(int i=0; i<100; i++){
-			producer.sendMessage(destination, "myname is chhliu!!!"+i);
-		}
-	}
+        for (int i = 0; i < 100; i++) {
+            producer.sendMessage(destination, "myname is chhliu!!!" + i);
+        }
+    }
 
 
 }
