@@ -10,7 +10,7 @@ spring:
     # 连接池的配置信息
     druid:
       #数据库链接
-      url: jdbc:mysql://180.76.239.43:3306/blog?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false&serverTimezone=CTT
+      url: jdbc:mysql://180.76.239.43:3306/authority?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false&serverTimezone=CTT
       #帐号
       username: root
       #密码

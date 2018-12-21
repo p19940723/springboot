@@ -5,6 +5,7 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.db.DBAppenderBase;
 import ch.qos.logback.core.db.DBHelper;
 import com.seven.authority.common.utils.logs.LogsSQLBuilder;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -148,6 +149,7 @@ public class DBAppender extends DBAppenderBase<ILoggingEvent> {
      * @see ch.qos.logback.core.db.DBAppenderBase#append(java.lang.Object)
      */
     @Override
+    @Async
     public void append(ILoggingEvent eventObject) {
         Connection connection = null;
         try {

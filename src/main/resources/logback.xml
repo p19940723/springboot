@@ -52,7 +52,7 @@
         <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
             <dataSource class="com.alibaba.druid.pool.DruidDataSource">
                 <driverClassName>com.mysql.jdbc.Driver</driverClassName>
-                <url>jdbc:mysql://180.76.239.43:3306/blog?characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=CTT</url>
+                <url>jdbc:mysql://180.76.239.43:3306/authority?characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=CTT</url>
                 <username>root</username>
                 <password>Root!!2018</password>
                 <!--<url>${spring.datasource.druid.url}</url>-->
@@ -71,7 +71,7 @@
     <logger name="com.seven.authority" level="ERROR">
         <appender-ref ref="syslog"/>
     </logger>
-    <logger name="com.seven.authority" level="ERROR">
+    <logger name="com.seven.authority" level="DEBUG">
         <appender-ref ref="DB-CLASSIC-MYSQL-POOL"/>
     </logger>
 </configuration>

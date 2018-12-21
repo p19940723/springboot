@@ -7,7 +7,7 @@ public class LogsSQLBuilder {
     //生成插入日志的sql
     public static String buildInsertSQL() {
         StringBuilder sqlBuilder = new StringBuilder("INSERT INTO ");
-        sqlBuilder.append("log").append(" (");
+        sqlBuilder.append("sys_log").append(" (");
         sqlBuilder.append("id").append(", ");
         sqlBuilder.append("url").append(", ");
         sqlBuilder.append("request_ip").append(", ");
