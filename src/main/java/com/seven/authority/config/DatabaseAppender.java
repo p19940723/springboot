@@ -4,7 +4,7 @@ import ch.qos.logback.classic.spi.CallerData;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.db.DBAppenderBase;
 import ch.qos.logback.core.db.DBHelper;
-import com.seven.authority.common.utils.logs.LogsSQLBuilder;
+import com.seven.authority.common.utils.logs.LogsSqlBuilder;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -21,7 +21,7 @@ import java.util.Date;
 /**
  * @author seven
  */
-public class DBAppender extends DBAppenderBase<ILoggingEvent> {
+public class DatabaseAppender extends DBAppenderBase<ILoggingEvent> {
 
     private static final Method GET_GENERATED_KEYS_METHOD;
 
@@ -69,7 +69,7 @@ public class DBAppender extends DBAppenderBase<ILoggingEvent> {
 
     @Override
     public void start() {
-        insertSQL = LogsSQLBuilder.buildInsertSQL();
+        insertSQL = LogsSqlBuilder.buildInsertSQL();
         super.start();
     }
 

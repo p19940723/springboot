@@ -3,7 +3,7 @@ package com.seven.authority.common.utils.logs;
 /**
  * @author seven
  */
-public class LogsSQLBuilder {
+public class LogsSqlBuilder {
 
     /**
      * 生成插入日志的sql
